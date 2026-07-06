@@ -6,8 +6,9 @@ import com.goslogic.orion.telemetry.application.port.TelemetryPositionConsumer;
 import org.springframework.stereotype.Component;
 
 /**
- * Implementación REST del puerto TelemetryPositionConsumer.
- * El futuro AmqpTelemetryMessageListener delegará en el mismo TelemetryIngestionService.
+ * Implementación REST (síncrona) del puerto TelemetryPositionConsumer: persiste directamente.
+ * Queda como bean NO-primary; en runtime el controller inyecta {@link JmsTelemetryPositionConsumer}
+ * (@Primary). Se mantiene como fallback e ingesta directa para los tests de {@link TelemetryIngestionService}.
  */
 @Component
 public class RestTelemetryPositionConsumer implements TelemetryPositionConsumer {

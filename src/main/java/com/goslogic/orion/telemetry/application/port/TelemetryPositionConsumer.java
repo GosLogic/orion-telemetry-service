@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Puerto de entrada para ingesta de posiciones GPS.
- * Implementaciones: RestTelemetryPositionConsumer (REST actual), AmqpTelemetryMessageListener (futuro broker).
+ * Implementaciones: JmsTelemetryPositionConsumer (@Primary), RestTelemetryPositionConsumer (fallback/tests).
  */
 public interface TelemetryPositionConsumer {
 

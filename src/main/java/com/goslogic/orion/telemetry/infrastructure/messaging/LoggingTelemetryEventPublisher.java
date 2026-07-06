@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * Implementación stub de TelemetryEventPublisher que registra los eventos en el log.
- * Sustituir por AmqpTelemetryEventPublisher cuando el broker esté disponible (decisión D11).
+ * Sustituir por JmsTelemetryEventPublisher cuando se publiquen fraud/geofence alerts por broker (decisión D11).
  */
 @Component
 public class LoggingTelemetryEventPublisher implements TelemetryEventPublisher {
