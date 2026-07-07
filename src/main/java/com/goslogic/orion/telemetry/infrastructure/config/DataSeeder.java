@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 /**
- * Datos demo alineados con el ecosistema Orion (tenant-demo, vehicle-001, Bodega Central).
+ * Datos demo alineados con dispatch (Lima) y tenant-demo / vehicle-001.
  */
 @Component
 @Profile("!test")
@@ -43,42 +43,40 @@ public class DataSeeder implements CommandLineRunner {
         Geofence bodega = geofenceRepository.save(new Geofence(
                 "tenant-demo",
                 "Bodega Central",
-                4.6097,
-                -74.0817,
+                -12.0464,
+                -77.0428,
                 500.0
         ));
 
-        OffsetDateTime baseTime = OffsetDateTime.parse("2026-06-05T14:30:00.000Z");
+        OffsetDateTime baseTime = OffsetDateTime.now().minusMinutes(10);
 
-        // Dentro de la geocerca (centro exacto)
         positionRepository.save(new VehiclePosition(
                 baseTime,
                 "vehicle-001",
-                4.6097,
-                -74.0817,
+                -12.0464,
+                -77.0428,
                 BigDecimal.valueOf(0.0),
                 0,
-                "route-001",
+                "route-demo-001",
                 false,
                 "tenant-demo",
                 "driver-demo"
         ));
 
-        // Fuera de la geocerca (~2 km al norte)
         positionRepository.save(new VehiclePosition(
                 baseTime.plusMinutes(5),
                 "vehicle-001",
-                4.6277,
-                -74.0817,
+                -12.0534,
+                -77.0500,
                 BigDecimal.valueOf(42.5),
                 180,
-                "route-001",
+                "route-demo-001",
                 false,
                 "tenant-demo",
                 "driver-demo"
         ));
 
-        log.info("[DataSeeder] Geocerca demo '{}' (id={}) y 2 posiciones para vehicle-001",
+        log.info("[DataSeeder] Geocerca '{}' (id={}) y 2 posiciones Lima para vehicle-001",
                 bodega.getName(), bodega.getId());
     }
 }
