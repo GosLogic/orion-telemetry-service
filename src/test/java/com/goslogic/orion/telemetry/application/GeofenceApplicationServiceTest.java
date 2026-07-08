@@ -18,6 +18,11 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit tests de GeofenceApplicationService (JUnit 5 + Mockito).
+ * Estas pruebas garantizan el rendimiento bajo alta carga de telemetría
+ * y la precisión geoespacial mediante TimescaleDB.
+ */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
 class GeofenceApplicationServiceTest {
